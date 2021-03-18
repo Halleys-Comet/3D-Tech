@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS 3D_tech_db;
+
+CREATE DATABASE 3D_tech_db;
