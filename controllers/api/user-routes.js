@@ -54,6 +54,27 @@ router.post('/', (req, res) => {
         });
 });
 
+router.post('/login', (req, res) => {
+    // expects {username: 'johno', password: 'password1234'}
+    User.findOne({
+      where: {
+        username: req.body.username
+      }
+    }).then(dbUserData => {
+      if (!dbUserData) {
+        res.status(400).json({ message: 'No user with that username!' });
+        return;
+      }
+  
+      const validPassword = dbUserData.checkPassword(req.body.password);
+      if (!validPassword) {
+        res.status(400).json({ message: 'Incorrect password!' });
+        return;
+      }
+  
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
+  });
 
 // Put users/1
 
@@ -61,8 +82,8 @@ router.put('/:id', (req, res) => {
 
     // expects {username: 'johno', password: 'password1234'}
 
-    // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
     User.update(req.body, {
+        individualHooks: true,
         where: {
             id: req.params.id
         }
