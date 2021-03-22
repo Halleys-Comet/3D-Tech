@@ -6,6 +6,7 @@
  
  
  ## view 
- 
- https://user-images.githubusercontent.com/74389460/111935923-853a9780-8a92-11eb-9ba1-3dcdf9423f57.png
+ ![image](https://user-images.githubusercontent.com/74389460/111936016-b87d2680-8a92-11eb-8328-8ec091e295af.png)
+
+
 
